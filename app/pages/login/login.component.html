@@ -1,0 +1,277 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-lg-2 col-sm-12 bg-primary text-white sidebar">
+      <section class="home-grid">
+        <div class="category-dropdown dropdown">
+          <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" placeholder="Search Category" [(ngModel)]="searchTerm" (input)="filterCategories()">
+          <ul class="dropdown-menu w-100">
+            <li class="dropdown-item" *ngFor="let category of filteredCategories" (click)="toggleCategory(category)">
+              {{ category[1] }}
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <div class="col-md-9 col-lg-10 col-sm-12 courses-section">
+      <p-toast key="toast1"></p-toast>
+      <section class="courses" *ngIf="!showEnrollment">
+        <div class="table-container">
+          <section class="home text-center" *ngIf="!Servicescatelog">
+            <h1 class="my-4">Welcome to HealthPortal Services</h1>
+            <p class="lead">
+              At HealthPortal, we offer a wide range of healthcare services tailored to meet your needs. From general consultations to specialized medical services, our experienced healthcare professionals are here to provide you with the best care.
+            </p>
+            <p class="lead">
+              To get started, simply select a service category from the dropdown menu on the left and explore the available services. Our comprehensive approach ensures you receive personalized and holistic care.
+            </p>
+            <p>Here are the steps to select and benefit from our services:</p>
+            <ol class="text-left">
+              <li>Select a service category from the dropdown menu</li>
+              <li>Browse the available services within that category</li>
+              <li>Click the "Learn More" button to get detailed information about the service</li>
+              <li>Schedule an appointment or consultation through our online booking system</li>
+              <li>Receive expert care and personalized treatment plans from our dedicated healthcare professionals</li>
+            </ol>
+          </section>
+          
+
+          <h2 class="heading text-center bg-info text-light py-2">{{ selectedcategory }}</h2>
+          <table class="table table-hover">
+            <tbody>
+              <tr *ngFor="let Services of Services" class="col-sm-12">
+                <td>{{ Services.ServicesName }}</td>
+                <td><button class="btn btn-primary float-right" (click)="toggleServicesContent(Services.ServicesId)">Enroll</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="services-section">
+        <h1 class="my-4">Our Services</h1>
+        <p>At HealthPortal, we are dedicated to providing comprehensive healthcare services tailored to meet the needs of our patients. Our team of experienced and compassionate healthcare professionals is committed to delivering high-quality medical care with a focus on personalized attention and holistic well-being.</p>
+        
+        <h2>General Consultations</h2>
+        <p>Our general consultations offer thorough health assessments and personalized treatment plans. Whether you need a routine check-up or advice on managing chronic conditions, our doctors are here to provide expert guidance and support.</p>
+        
+        <h2>Specialized Medical Services</h2>
+        <p>We offer a range of specialized medical services to address specific health concerns. Our specialties include, but are not limited to:</p>
+        <ul>
+          <li>Cardiology</li>
+          <li>Dermatology</li>
+          <li>Endocrinology</li>
+          <li>Gastroenterology</li>
+          <li>Neurology</li>
+          <li>Orthopedics</li>
+        </ul>
+
+        <h2>Preventive Care</h2>
+        <p>Prevention is the cornerstone of maintaining good health. Our preventive care services include health screenings, vaccinations, and lifestyle advice to help you stay healthy and avoid potential health issues.</p>
+        
+        <h2>Diagnostic Services</h2>
+        <p>Accurate diagnosis is crucial for effective treatment. We provide state-of-the-art diagnostic services, including laboratory tests, imaging studies (X-rays, MRIs, CT scans), and more, to ensure precise and timely diagnosis of medical conditions.</p>
+
+        <h2>Telemedicine</h2>
+        <p>Access healthcare from the comfort of your home with our telemedicine services. Schedule virtual consultations with our doctors, receive medical advice, and get prescriptions without the need to visit our clinic in person.</p>
+
+        <h2>Wellness Programs</h2>
+        <p>Our wellness programs are designed to promote overall health and well-being. We offer nutrition counseling, weight management programs, stress management techniques, and fitness advice to help you lead a healthier lifestyle.</p>
+
+        <h2>Pediatric Care</h2>
+        <p>We provide specialized care for infants, children, and adolescents. Our pediatric services include routine check-ups, immunizations, growth and development monitoring, and treatment of childhood illnesses.</p>
+
+        <h2>Women’s Health</h2>
+        <p>Our women’s health services cover a wide range of needs, including gynecological exams, prenatal and postnatal care, family planning, and menopause management. We are dedicated to supporting women’s health at every stage of life.</p>
+
+        <h2>Senior Care</h2>
+        <p>We offer comprehensive care tailored to the needs of older adults. Our senior care services include geriatric assessments, management of chronic conditions, and support for maintaining independence and quality of life.</p>
+
+        <h2>Mental Health Services</h2>
+        <p>Mental health is an integral part of overall health. Our mental health services include counseling, therapy, and treatment for conditions such as anxiety, depression, and other mental health disorders.</p>
+      </section>
+
+      <section class="enrollsection" id="enrollsection" *ngIf="showEnrollment">
+        <div class="modal fade show d-block" id="enrollModal" tabindex="-1" role="dialog" aria-labelledby="enrollModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="enrollModalLabel">Course Enrollment</h5>
+                <button type="button" class="close" aria-label="Close" (click)="toggleEnrollment()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div *ngFor="let course of courses">
+                  <div class="coursecontent" *ngIf="course.showContent">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Title</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let content of <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-md-3 col-lg-2 col-sm-12 bg-primary text-white sidebar">
+                              <section class="home-grid">
+                                <div class="category-dropdown dropdown">
+                                  <input type="text" class="form-control dropdown-toggle" data-toggle="dropdown" placeholder="Search Category" [(ngModel)]="searchTerm" (input)="filterCategories()">
+                                  <ul class="dropdown-menu w-100">
+                                    <li class="dropdown-item" *ngFor="let category of filteredCategories" (click)="toggleCategory(category)">
+                                      {{ category[1] }}
+                                    </li>
+                                  </ul>
+                                </div>
+                              </section>
+                            </div>
+                            <div class="col-md-9 col-lg-10 col-sm-12 courses-section">
+                              <p-toast key="toast1"></p-toast>
+                              <section class="courses" *ngIf="!showEnrollment">
+                                <div class="table-container">
+                                  <section class="home text-center" *ngIf="!coursecatelog">
+                                    <h1 class="my-4">Welcome to Service Catalog</h1>
+                                    <p class="lead">
+                                      Course catalog offers a wide variety of courses to help you learn new skills and advance your career.
+                                      From programming to business to design, we have something for everyone.
+                                    </p>
+                                    <p class="lead">
+                                      To get started, simply select a category from the dropdown menu on the left and browse the available courses.
+                                      When you find a course you're interested in, click the "Enroll" button to get started.
+                                    </p>
+                                    <p>Here are the steps to enroll in a course:</p>
+                                    <ol class="text-left">
+                                      <li>Select a category from the dropdown menu</li>
+                                      <li>Browse the available courses</li>
+                                      <li>Click the "Enroll" button for the course you want to take</li>
+                                      <li>Confirm your enrollment in the enrollment modal</li>
+                                      <li>Start learning!</li>
+                                    </ol>
+                                  </section>
+                        
+                                  <h2 class="heading text-center bg-info text-light py-2">{{ selectedcategory }}</h2>
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr *ngFor="let course of courses" class="col-sm-12">
+                                        <td>{{ course.courseName }}</td>
+                                        <td><button class="btn btn-primary float-right" (click)="toggleCourseContent(course.courseId)">Enroll</button></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </section>
+                        
+                              <section class="services-section">
+                                <h1 class="my-4">Our Services</h1>
+                                <p>At HealthPortal, we are dedicated to providing comprehensive healthcare services tailored to meet the needs of our patients. Our team of experienced and compassionate healthcare professionals is committed to delivering high-quality medical care with a focus on personalized attention and holistic well-being.</p>
+                                
+                                <h2>General Consultations</h2>
+                                <p>Our general consultations offer thorough health assessments and personalized treatment plans. Whether you need a routine check-up or advice on managing chronic conditions, our doctors are here to provide expert guidance and support.</p>
+                                
+                                <h2>Specialized Medical Services</h2>
+                                <p>We offer a range of specialized medical services to address specific health concerns. Our specialties include, but are not limited to:</p>
+                                <ul>
+                                  <li>Cardiology</li>
+                                  <li>Dermatology</li>
+                                  <li>Endocrinology</li>
+                                  <li>Gastroenterology</li>
+                                  <li>Neurology</li>
+                                  <li>Orthopedics</li>
+                                </ul>
+                        
+                                <h2>Preventive Care</h2>
+                                <p>Prevention is the cornerstone of maintaining good health. Our preventive care services include health screenings, vaccinations, and lifestyle advice to help you stay healthy and avoid potential health issues.</p>
+                                
+                                <h2>Diagnostic Services</h2>
+                                <p>Accurate diagnosis is crucial for effective treatment. We provide state-of-the-art diagnostic services, including laboratory tests, imaging studies (X-rays, MRIs, CT scans), and more, to ensure precise and timely diagnosis of medical conditions.</p>
+                        
+                                <h2>Telemedicine</h2>
+                                <p>Access healthcare from the comfort of your home with our telemedicine services. Schedule virtual consultations with our doctors, receive medical advice, and get prescriptions without the need to visit our clinic in person.</p>
+                        
+                                <h2>Wellness Programs</h2>
+                                <p>Our wellness programs are designed to promote overall health and well-being. We offer nutrition counseling, weight management programs, stress management techniques, and fitness advice to help you lead a healthier lifestyle.</p>
+                        
+                                <h2>Pediatric Care</h2>
+                                <p>We provide specialized care for infants, children, and adolescents. Our pediatric services include routine check-ups, immunizations, growth and development monitoring, and treatment of childhood illnesses.</p>
+                        
+                                <h2>Women’s Health</h2>
+                                <p>Our women’s health services cover a wide range of needs, including gynecological exams, prenatal and postnatal care, family planning, and menopause management. We are dedicated to supporting women’s health at every stage of life.</p>
+                        
+                                <h2>Senior Care</h2>
+                                <p>We offer comprehensive care tailored to the needs of older adults. Our senior care services include geriatric assessments, management of chronic conditions, and support for maintaining independence and quality of life.</p>
+                        
+                                <h2>Mental Health Services</h2>
+                                <p>Mental health is an integral part of overall health. Our mental health services include counseling, therapy, and treatment for conditions such as anxiety, depression, and other mental health disorders.</p>
+                              </section>
+                        
+                              <section class="enrollsection" id="enrollsection" *ngIf="showEnrollment">
+                                <div class="modal fade show d-block" id="enrollModal" tabindex="-1" role="dialog" aria-labelledby="enrollModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header bg-primary text-white">
+                                        <h5 class="modal-title" id="enrollModalLabel">Course Enrollment</h5>
+                                        <button type="button" class="close" aria-label="Close" (click)="toggleEnrollment()">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div *ngFor="let course of courses">
+                                          <div class="coursecontent" *ngIf="course.showContent">
+                                            <table class="table table-bordered">
+                                              <thead>
+                                                <tr>
+                                                  <th>Title</th>
+                                                  <th>Description</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr *ngFor="let content of courseContent">
+                                                  <td>{{ content.contentTitle }}</td>
+                                                  <td>{{ content.contentDescription }}</td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <span *ngIf="authService.isLoggedIn()">
+                                          <button class="btn btn-primary" (click)="enrollCourse(selectedCourseId)">Enroll Course</button>
+                                        </span>
+                                        <span *ngIf="!authService.isLoggedIn()">
+                                          <a class="btn btn-info" routerLink="/login">Login</a>
+                                        </span>
+                                        <button class="btn btn-secondary" (click)="toggleEnrollment()">Close</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+                        Content">
+                          <td>{{ content.contentTitle }}</td>
+                          <td>{{ content.contentDescription }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <span *ngIf="authService.isLoggedIn()">
+                  <button class="btn btn-primary" (click)="enrollCourse(selectedCourseId)">Enroll Course</button>
+                </span>
+                <span *ngIf="!authService.isLoggedIn()">
+                  <a class="btn btn-info" routerLink="/login">Login</a>
+                </span>
+                <button class="btn btn-secondary" (click)="toggleEnrollment()">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
